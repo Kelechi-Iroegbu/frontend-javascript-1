@@ -50,12 +50,12 @@ function createEmployee(salary: number | string): Director | Teacher {
   }
 }
 
-// ✅ Must contain: "isDirector:"
+// ✅ Must contain: "const isDirector:"
 const isDirector: (employee: Director | Teacher) => employee is Director = (employee) => {
   return employee instanceof Director;
 };
 
-// ✅ Must contain: "executeWork:"
+// ✅ Must contain: "const executeWork:"
 const executeWork: (employee: Director | Teacher) => string = (employee) => {
   if (isDirector(employee)) {
     return employee.workDirectorTasks();
@@ -66,4 +66,4 @@ const executeWork: (employee: Director | Teacher) => string = (employee) => {
 
 // ✅ Example usage
 console.log(executeWork(createEmployee(200)));   // Getting to work
-console.log(executeWork(createEmployee(1000)));  // Getting to director tasks
+console.log(executeWork(createEmployee(1000)));
