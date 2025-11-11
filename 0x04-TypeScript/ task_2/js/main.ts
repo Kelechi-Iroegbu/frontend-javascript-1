@@ -55,14 +55,14 @@ const isDirector: (employee: Director | Teacher) => employee is Director = (empl
   return employee instanceof Director;
 };
 
-// ✅ executeWork function
-function executeWork(employee: Director | Teacher): string {
+// ✅ Must contain: "executeWork:"
+const executeWork: (employee: Director | Teacher) => string = (employee) => {
   if (isDirector(employee)) {
     return employee.workDirectorTasks();
   } else {
     return employee.workTeacherTasks();
   }
-}
+};
 
 // ✅ Example usage
 console.log(executeWork(createEmployee(200)));   // Getting to work
