@@ -1,3 +1,6 @@
+//task_2/js/main.ts
+
+
 interface DirectorInterface {
   workFromHome(): string;
   getCoffeeBreak(): string;
