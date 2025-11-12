@@ -56,7 +56,7 @@ const isDirector: (employee: Director | Teacher) => employee is Director = (empl
 };
 
 // ✅ Must contain: "const executeWork:"
-const executeWork : (employee: Director | Teacher) => string = (employee) => {
+const executeWork: (employee: Director | Teacher) => string = (employee) => {
   if (isDirector(employee)) {
     return employee.workDirectorTasks();
   } else {
