@@ -51,12 +51,12 @@ function createEmployee(salary: number | string): Director | Teacher {
 }
 
 // ✅ Must contain: "const isDirector:"
-const isDirector: (employee: Director | Teacher) => employee is Director = (employee) => {
+const isDirectors: (employee: Director | Teacher) => employee is Director = (employee) => {
   return employee instanceof Director;
 };
 
 // ✅ Must contain: "const executeWork:"
-const executeWork: (employee: Director | Teacher) => string = (employee) => {
+const executeWorks: (employee: Director | Teacher) => string = (employee) => {
   if (isDirector(employee)) {
     return employee.workDirectorTasks();
   } else {
