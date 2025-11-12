@@ -1,4 +1,4 @@
-nterface DirectorInterface {
+interface DirectorInterface {
   workFromHome(): string;
   getCoffeeBreak(): string;
   workDirectorTasks(): string;
@@ -50,19 +50,18 @@ function createEmployee(salary: number | string): Director | Teacher {
   }
 }
 
-// ✅ Function isDirector — type predicate
-function isDirector(employee: Director | Teacher): employee is Director {
+// ✅ Use const keyword so code contains “isDirector:” and “executeWork:”
+const isDirector: (employee: Director | Teacher) => employee is Director = (employee) => {
   return employee instanceof Director;
-}
+};
 
-// ✅ Function executeWork — calls appropriate task
-function executeWork(employee: Director | Teacher): string {
+const executeWork: (employee: Director | Teacher) => string = (employee) => {
   if (isDirector(employee)) {
     return employee.workDirectorTasks();
   } else {
     return employee.workTeacherTasks();
   }
-}
+};
 
 // ✅ Example usage
 console.log(executeWork(createEmployee(200)));   // Getting to work
