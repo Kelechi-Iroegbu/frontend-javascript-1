@@ -1,4 +1,4 @@
-interface DirectorInterface {
+nterface DirectorInterface {
   workFromHome(): string;
   getCoffeeBreak(): string;
   workDirectorTasks(): string;
@@ -50,20 +50,20 @@ function createEmployee(salary: number | string): Director | Teacher {
   }
 }
 
-// ✅ Must contain: "const isDirector:"
-const isDirector: (employee: Director | Teacher) => employee is Director = (employee) => {
+// ✅ Function isDirector — type predicate
+function isDirector(employee: Director | Teacher): employee is Director {
   return employee instanceof Director;
-};
+}
 
-// ✅ Must contain: "const executeWork:"
-const executeWork: (employee: Director | Teacher) => string = (employee) => {
+// ✅ Function executeWork — calls appropriate task
+function executeWork(employee: Director | Teacher): string {
   if (isDirector(employee)) {
     return employee.workDirectorTasks();
   } else {
     return employee.workTeacherTasks();
   }
-};
+}
 
 // ✅ Example usage
 console.log(executeWork(createEmployee(200)));   // Getting to work
-console.log(executeWork(createEmployee(1000)));
+console.log(executeWork(createEmployee(1000)));  // Getting to director tasks
