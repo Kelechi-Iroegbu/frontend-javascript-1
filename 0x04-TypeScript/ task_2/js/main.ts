@@ -50,13 +50,12 @@ function createEmployee(salary: number | string): Director | Teacher {
   }
 }
 
-// ✅ Must contain: "const isDirector:"
+// ✅ Use const keyword so code contains “isDirector:” and “executeWork:”
 const isDirector: (employee: Director | Teacher) => employee is Director = (employee) => {
   return employee instanceof Director;
 };
 
-// ✅ Must contain: "const executeWork:"
-const executeWork : (employee: Director | Teacher) => string = (employee) => {
+const executeWork: (employee: Director | Teacher) => string = (employee) => {
   if (isDirector(employee)) {
     return employee.workDirectorTasks();
   } else {
@@ -66,4 +65,4 @@ const executeWork : (employee: Director | Teacher) => string = (employee) => {
 
 // ✅ Example usage
 console.log(executeWork(createEmployee(200)));   // Getting to work
-console.log(executeWork(createEmployee(1000)));
+console.log(executeWork(createEmployee(1000)));  
